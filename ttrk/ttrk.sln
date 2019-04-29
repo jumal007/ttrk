@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28621.142
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ttrk", "ttrk\ttrk.csproj", "{D6BCC313-2B0B-4B1C-9EA0-365E3A28F95F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ttrk", "ttrk\ttrk.csproj", "{D6BCC313-2B0B-4B1C-9EA0-365E3A28F95F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMovie", "MvcMovie\MvcMovie.csproj", "{54104C88-56C3-4552-A9EA-149877F3E449}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcMovie", "MvcMovie\MvcMovie.csproj", "{54104C88-56C3-4552-A9EA-149877F3E449}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicBookGallery", "ComicBookGallery\ComicBookGallery.csproj", "{609C508E-B41A-4E40-A44B-4F3830DFC6E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{54104C88-56C3-4552-A9EA-149877F3E449}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54104C88-56C3-4552-A9EA-149877F3E449}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54104C88-56C3-4552-A9EA-149877F3E449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{609C508E-B41A-4E40-A44B-4F3830DFC6E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{609C508E-B41A-4E40-A44B-4F3830DFC6E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{609C508E-B41A-4E40-A44B-4F3830DFC6E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{609C508E-B41A-4E40-A44B-4F3830DFC6E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
