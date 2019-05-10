@@ -1,6 +1,6 @@
 using System;
 
-namespace ttrk.Models
+namespace TTRK.Models
 {
     public class ErrorViewModel
     {
