@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicBookGallery", "ComicBo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTRK", "TTRK\TTRK.csproj", "{8D66D069-F58B-4E78-A644-204A2209D62A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoUniversity", "ContosoUniversity\ContosoUniversity.csproj", "{7DE6198C-6F4B-44E0-8DE7-E197C4329FA1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{8D66D069-F58B-4E78-A644-204A2209D62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D66D069-F58B-4E78-A644-204A2209D62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D66D069-F58B-4E78-A644-204A2209D62A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DE6198C-6F4B-44E0-8DE7-E197C4329FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DE6198C-6F4B-44E0-8DE7-E197C4329FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DE6198C-6F4B-44E0-8DE7-E197C4329FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DE6198C-6F4B-44E0-8DE7-E197C4329FA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
