@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using TTRK.Data;
 using TTRK.Models;
 using TTRK.Services;
+using Microsoft.AspNetCore.Http;
+using Open.TTRK.Data;
 
 namespace TTRK
 {
@@ -35,6 +37,9 @@ namespace TTRK
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddDbContext<LibraryContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc();
         }
