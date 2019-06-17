@@ -12,7 +12,7 @@ namespace Open.TTRK.Models
         public string Title { get; set; }
         public string Author { get; set; }
         public DateTime DateOfPublication { get; set; }
-        public string Floor { get; set; }
+        public int Floor { get; set; }
         public int Rack { get; set; }
         public string BookID { get; set; }
         public bool Status { get; set; }
@@ -20,5 +20,6 @@ namespace Open.TTRK.Models
 
         public Customer Customer{ get; set; }
         public string CustomerID { get; internal set; }
+        
     }
 }
