@@ -60,7 +60,10 @@ namespace TalTechRaamatukogu.Controllers
             }
 
             var customer = await _context.Customers
+                .Include(s => s.Books)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.CustomerID == id);
+
             if (customer == null)
             {
                 return NotFound();
