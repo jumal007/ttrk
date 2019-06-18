@@ -20,9 +20,35 @@ namespace TalTechRaamatukogu.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            return View(await _context.Customers.ToListAsync());
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
+
+            var Customer = from s in _context.Customers
+                select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Customer = Customer.Where(s => s.LastName.Contains(searchString)
+                                               || s.FirstName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    Customer = Customer.OrderByDescending(s => s.LastName);
+                    break;
+                case "Date":
+                    Customer = Customer.OrderBy(s => s.DateOfBirth);
+                    break;
+                case "date_desc":
+                    Customer = Customer.OrderByDescending(s => s.DateOfBirth);
+                    break;
+                default:
+                    Customer = Customer.OrderBy(s => s.LastName);
+                    break;
+            }
+            return View(await Customer.AsNoTracking().ToListAsync());
         }
 
         // GET: Customers/Details/5
@@ -54,13 +80,24 @@ namespace TalTechRaamatukogu.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,Dept,CustomerID,DateOfBirth,Email")] Customer customer)
+        public async Task<IActionResult> Create(
+            [Bind("FirstName,LastName,Dept,DateOfBirth,Email")] Customer customer)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(customer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(customer);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes. " +
+                                             "Try again, and if the problem persists " +
+                                             "see your system administrator.");
             }
             return View(customer);
         }
