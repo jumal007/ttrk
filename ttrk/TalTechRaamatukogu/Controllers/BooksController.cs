@@ -27,7 +27,7 @@ namespace TalTechRaamatukogu.Controllers
             ViewData["CurrentFilter"] = searchString;
 
             var books = from s in _context.Books
-                select s;
+                        select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 books = books.Where(s => s.Title.Contains(searchString)
@@ -84,13 +84,24 @@ namespace TalTechRaamatukogu.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Title,Author,DateOfPublication,Floor,Rack,BookID,Status,DateOfReturn,CustomerID")] Book book)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(book);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(book);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CustomerID", book.CustomerID);
+
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CustomerID", book.CustomerID);
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes. " +
+                                             "Try again, and if the problem persists " +
+                                             "see your system administrator.");
+            }
             return View(book);
         }
 
@@ -102,13 +113,26 @@ namespace TalTechRaamatukogu.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Books.FindAsync(id);
-            if (book == null)
+            var bookToUpdate = await _context.Books.FirstOrDefaultAsync(s => s.BookID == id);
+            if (await TryUpdateModelAsync<Book>(
+                bookToUpdate,
+                "",
+                s => s.Title, s => s.Author, s => s.DateOfPublication))
             {
-                return NotFound();
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException /* ex */)
+                {
+                    //Log the error (uncomment ex variable name and write a log.)
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                                                 "Try again, and if the problem persists, " +
+                                                 "see your system administrator.");
+                }
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CustomerID", book.CustomerID);
-            return View(book);
+            return View(bookToUpdate);
         }
 
         // POST: Books/Edit/5

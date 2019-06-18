@@ -14,11 +14,9 @@ namespace TalTechRaamatukogu.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOfPublication { get; set; }
         public int Floor { get; set; }
-        [StringLength(1)]
         public int Rack { get; set; }
-        [StringLength(2)]
+        [StringLength(8, MinimumLength = 8)]
         public string BookID { get; set; }
-        [StringLength(8,MinimumLength = 8)]
         public bool Status { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

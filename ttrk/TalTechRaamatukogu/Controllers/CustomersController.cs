@@ -38,12 +38,6 @@ namespace TalTechRaamatukogu.Controllers
                 case "name_desc":
                     Customer = Customer.OrderByDescending(s => s.LastName);
                     break;
-                case "Date":
-                    Customer = Customer.OrderBy(s => s.DateOfBirth);
-                    break;
-                case "date_desc":
-                    Customer = Customer.OrderByDescending(s => s.DateOfBirth);
-                    break;
                 default:
                     Customer = Customer.OrderBy(s => s.LastName);
                     break;
