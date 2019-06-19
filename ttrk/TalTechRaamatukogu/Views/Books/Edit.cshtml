@@ -37,7 +37,11 @@
                 <input asp-for="Rack" class="form-control" />
                 <span asp-validation-for="Rack" class="text-danger"></span>
             </div>
-            <input type="hidden" asp-for="BookID" />
+            <div class="form-group">
+                <label asp-for="BookID" class="control-label">Book ID</label>
+                <input asp-for="BookID" class="form-control" />
+                <span asp-validation-for="Rack" class="text-danger"></span>
+            </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
