@@ -114,24 +114,7 @@ namespace TalTechRaamatukogu.Controllers
             }
 
             var bookToUpdate = await _context.Books.FirstOrDefaultAsync(s => s.BookID == id);
-            if (await TryUpdateModelAsync<Book>(
-                bookToUpdate,
-                "",
-                s => s.Title, s => s.Author, s => s.DateOfPublication))
-            {
-                try
-                {
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (DbUpdateException /* ex */)
-                {
-                    //Log the error (uncomment ex variable name and write a log.)
-                    ModelState.AddModelError("", "Unable to save changes. " +
-                                                 "Try again, and if the problem persists, " +
-                                                 "see your system administrator.");
-                }
-            }
+            
             return View(bookToUpdate);
         }
 

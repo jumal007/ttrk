@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicBookGallery", "ComicBo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTRK", "TTRK\TTRK.csproj", "{8D66D069-F58B-4E78-A644-204A2209D62A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalTechRaamatukogu", "TalTechRaamatukogu\TalTechRaamatukogu.csproj", "{0FECD98C-5F84-487B-9B56-3EF931361CA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalTechRaamatukogu", "TalTechRaamatukogu\TalTechRaamatukogu.csproj", "{0FECD98C-5F84-487B-9B56-3EF931361CA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

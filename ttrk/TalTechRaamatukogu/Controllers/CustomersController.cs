@@ -27,7 +27,7 @@ namespace TalTechRaamatukogu.Controllers
             ViewData["CurrentFilter"] = searchString;
 
             var Customer = from s in _context.Customers
-                select s;
+                           select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 Customer = Customer.Where(s => s.LastName.Contains(searchString)
@@ -78,25 +78,14 @@ namespace TalTechRaamatukogu.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("FirstName,LastName,Dept,DateOfBirth,Email")] Customer customer)
+            [Bind("FirstName,LastName,Dept,Email")] Customer customer)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    _context.Add(customer);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-            }
-            catch (DbUpdateException /* ex */)
-            {
-                //Log the error (uncomment ex variable name and write a log.
-                ModelState.AddModelError("", "Unable to save changes. " +
-                                             "Try again, and if the problem persists " +
-                                             "see your system administrator.");
-            }
-            return View(customer);
+
+            _context.Add(customer);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+            //return View(customer);
         }
 
         // GET: Customers/Edit/5
@@ -129,22 +118,11 @@ namespace TalTechRaamatukogu.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(customer);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CustomerExists(customer.CustomerID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
+                _context.Update(customer);
+                await _context.SaveChangesAsync();
+
+
                 return RedirectToAction(nameof(Index));
             }
             return View(customer);

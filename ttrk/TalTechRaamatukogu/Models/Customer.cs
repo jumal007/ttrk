@@ -21,14 +21,7 @@ namespace TalTechRaamatukogu.Models
         [Display(Name = "ID")]
         public string CustomerID { get; set; } //it is ID of estonian citizens
         [Display(Name = "E-mail")]
-        public string Email
-        {
-            get
-            {
-                return LastName.Substring(0, 3) + FirstName.Substring(0, 3) + "@ttrk.com";
-            }
-        }
-
+        public string Email { get; set; }
         public ICollection<Book> Books { get; set; }
     }
 }
